@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Expense Bucket</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email or number</string>
+    <string name="sign_in">Sign In</string>
+    <string name="description">Description</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="update_transaction">Update Transaction</string>
+</resources>

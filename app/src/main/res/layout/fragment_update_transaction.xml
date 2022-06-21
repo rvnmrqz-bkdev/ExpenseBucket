@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".ui.fragment_update.UpdateTransactionFragment">
+
+    <TextView
+        android:textColor="@color/black_700"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/update_transaction"
+        android:textAlignment="center"
+        android:textSize="26sp" />
+
+    <EditText
+        android:id="@+id/description_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/description"
+        android:inputType="text" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/category_spn"
+        android:minHeight="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/amount_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/update_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Update" />
+
+</LinearLayout>
