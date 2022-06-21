@@ -40,16 +40,13 @@ class TransactionListAdapter(val adapterOnClick: (ExpenseWithCategory) -> Unit) 
     }
 
     class MViewHolder(binder: TransactionItemViewBinding) : RecyclerView.ViewHolder(binder.root) {
-        //        private val idTxt = binder.idTxt
         private val descriptionTxt = binder.descriptionTxt
         private val categoryDescTxt = binder.categoryTxt
-
-        //        private val ageTxt = binder.ageTxt
         private val amountTxt = binder.amountTxt
 
         fun bind(item: ExpenseWithCategory) {
             descriptionTxt.text = item.expense.description
-            amountTxt.text =  item.expense.amount.toString()
+            amountTxt.text = "${item.category?.operator} ${item.expense.amount}"
             categoryDescTxt.text = item.category?.description
         }
     }
