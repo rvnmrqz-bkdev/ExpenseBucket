@@ -1,6 +1,6 @@
 package com.arvinmarquez.expensebucket.ui.fragment_update
 
-import android.R
+
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.arvinmarquez.expensebucket.R
 import com.arvinmarquez.expensebucket.data.entities.ExpenseEntity
 import com.arvinmarquez.expensebucket.databinding.FragmentUpdateTransactionBinding
 import com.arvinmarquez.expensebucket.data.pojo.ExpenseWithCategory
@@ -33,7 +34,19 @@ class UpdateTransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[UpdateViewModel::class.java]
+        setHasOptionsMenu(true)
         displayExpense(args.item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.action_delete){
+            deleteItem(args.item)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun displayExpense(openedExpense: ExpenseWithCategory) {
@@ -42,7 +55,7 @@ class UpdateTransactionFragment : Fragment() {
         binder.amountEdt.setText(openedExpense.expense.amount.toString())
 
         viewModel.categoryOptions.observe(viewLifecycleOwner) { options ->
-            val adapter = ArrayAdapter(requireContext(), R.layout.simple_list_item_1, options)
+            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, options)
             binder.categorySpn.adapter = adapter
             binder.categorySpn.setSelection(adapter.getPosition(openedExpense.category))
             binder.categorySpn.onItemSelectedListener =
@@ -72,11 +85,15 @@ class UpdateTransactionFragment : Fragment() {
                 openedExpense.expense.date
             )
 
-            viewModel.updateTransaction(expense)
+            viewModel.update(expense)
             Toast.makeText(requireContext(), "Item is updated", Toast.LENGTH_SHORT).show()
             findNavController().navigateUp()
         }
     }
 
-
+    private fun deleteItem(openedExpense: ExpenseWithCategory){
+        viewModel.deleteItem(openedExpense.expense)
+        Toast.makeText(requireContext(), "Item is deleted", Toast.LENGTH_SHORT).show()
+        findNavController().navigateUp()
+    }
 }

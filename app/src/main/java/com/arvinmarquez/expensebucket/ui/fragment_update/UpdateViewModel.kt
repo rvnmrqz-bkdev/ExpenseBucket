@@ -33,9 +33,15 @@ class UpdateViewModel(application: Application) : AndroidViewModel(application) 
         categoryOptions = categoryRepo.liveCategories
     }
 
-    fun updateTransaction(expense: ExpenseEntity){
+    fun update(expense: ExpenseEntity){
         viewModelScope.launch(Dispatchers.IO) {
             transactionRepo.update(expense)
+        }
+    }
+
+    fun deleteItem(expense: ExpenseEntity){
+        viewModelScope.launch(Dispatchers.IO) {
+            transactionRepo.delete(expense)
         }
     }
 
