@@ -29,8 +29,8 @@
     <fragment
         android:id="@+id/updateTransactionFragment"
         android:name="com.arvinmarquez.expensebucket.ui.fragment_update.UpdateTransactionFragment"
-        android:label="fragment_update_transaction"
-        tools:layout="@layout/fragment_update_transaction" >
+        android:label="Update"
+        tools:layout="@layout/fragment_update_transaction">
         <action
             android:id="@+id/action_updateTransactionFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
