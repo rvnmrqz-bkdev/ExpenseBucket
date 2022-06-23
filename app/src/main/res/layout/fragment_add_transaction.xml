@@ -21,19 +21,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/description"
-        android:inputType="text" />
-
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/category_spn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="32dp" />
+        android:inputType="textCapSentences" />
 
     <EditText
         android:id="@+id/amount_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Amount"
         android:inputType="numberDecimal" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Category:"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/category_spn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/tvCategory"
+            android:minHeight="32dp" />
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/done_btn"
