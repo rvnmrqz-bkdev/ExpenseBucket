@@ -2,27 +2,28 @@ package com.arvinmarquez.expensebucket.data.repository
 
 import com.arvinmarquez.expensebucket.db.daos.CategoryDao
 import com.arvinmarquez.expensebucket.data.entities.CategoryEntity
+import javax.inject.Inject
 
-class CategoryRepo(
-    val dao: CategoryDao
+class CategoryRepo @Inject constructor(
+    private val categoryDao: CategoryDao
 ) {
 
-    val liveCategories = dao.liveCategories()
+    val liveCategories = categoryDao.liveCategories()
 
-    suspend fun allCategories() : List<CategoryEntity> {
-        return dao.allCategories()
+    suspend fun allCategories(): List<CategoryEntity> {
+        return categoryDao.allCategories()
     }
 
     suspend fun addCategory(category: CategoryEntity) {
-        dao.insertCategory(category)
+        categoryDao.insertCategory(category)
     }
 
     suspend fun updateCategory(category: CategoryEntity) {
-        dao.updateCategory(category)
+        categoryDao.updateCategory(category)
     }
 
     suspend fun deleteCategory(category: CategoryEntity) {
-        dao.deleteCategory(category.id)
+        categoryDao.deleteCategory(category.id)
     }
 
 }

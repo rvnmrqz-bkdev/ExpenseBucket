@@ -1,23 +1,26 @@
-package com.arvinmarquez.expensebucket.ui.fragment_add
+package com.arvinmarquez.expensebucket.presentation.fragment_add
 
-import android.app.Application
 import android.text.TextUtils
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arvinmarquez.expensebucket.data.entities.CategoryEntity
 import com.arvinmarquez.expensebucket.data.entities.ExpenseEntity
 import com.arvinmarquez.expensebucket.data.repository.CategoryRepo
-import com.arvinmarquez.expensebucket.data.repository.TransactionRepo
-import com.arvinmarquez.expensebucket.db.BucketDatabase
+import com.arvinmarquez.expensebucket.data.repository.ExpenseRepo
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
+import javax.inject.Inject
 
-class AddViewModel(application: Application) : AndroidViewModel(application) {
+@HiltViewModel
+class AddViewModel @Inject constructor(
+    val expenseRepo: ExpenseRepo,
+    val categoryRepo: CategoryRepo
+) : ViewModel() {
 
-    private val transactionRepo: TransactionRepo
-    private val categoryRepo: CategoryRepo
+
     val allCategories: LiveData<List<CategoryEntity>>
 
     var description: String = ""
@@ -25,11 +28,6 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
     var amount: Double? = 0.0
 
     init {
-        val transactionDao =
-            BucketDatabase.getInstance(application, viewModelScope).moneyTransactionDao()
-        val categoryDao = BucketDatabase.getInstance(application, viewModelScope).categoryDao()
-        transactionRepo = TransactionRepo(transactionDao)
-        categoryRepo = CategoryRepo(categoryDao)
         allCategories = categoryRepo.liveCategories
     }
 
@@ -51,7 +49,7 @@ class AddViewModel(application: Application) : AndroidViewModel(application) {
 
     private fun addTransaction(transaction: ExpenseEntity) {
         viewModelScope.launch(Dispatchers.IO) {
-            transactionRepo.insert(transaction)
+            expenseRepo.insert(transaction)
         }
     }
 }

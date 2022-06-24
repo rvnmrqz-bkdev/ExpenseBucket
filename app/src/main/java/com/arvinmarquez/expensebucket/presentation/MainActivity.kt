@@ -1,11 +1,14 @@
-package com.arvinmarquez.expensebucket.ui
+package com.arvinmarquez.expensebucket.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.arvinmarquez.expensebucket.R
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,12 +19,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.fragment_container);
-        return navController.navigateUp() ||  super.onSupportNavigateUp()
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
     override fun onBackPressed() {
         val navController = findNavController(R.id.fragment_container)
-        if(navController.popBackStack().not()) {
+        if (navController.popBackStack().not()) {
             super.onBackPressed()
         }
     }

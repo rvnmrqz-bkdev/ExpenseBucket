@@ -5,10 +5,12 @@ import androidx.lifecycle.LiveData
 import com.arvinmarquez.expensebucket.db.daos.ExpenseDao
 import com.arvinmarquez.expensebucket.data.entities.ExpenseEntity
 import com.arvinmarquez.expensebucket.data.pojo.ExpenseWithCategory
+import javax.inject.Inject
 
-class TransactionRepo(
+class ExpenseRepo @Inject constructor(
     private val expenseDao: ExpenseDao
 ) {
+
     val allExpenseWithCategory : LiveData<List<ExpenseWithCategory>> = expenseDao.liveExpensesWithCategory()
 
     suspend fun insert(transaction: ExpenseEntity) {

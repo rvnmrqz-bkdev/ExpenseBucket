@@ -1,4 +1,4 @@
-package com.arvinmarquez.expensebucket.ui.fragment_update
+package com.arvinmarquez.expensebucket.presentation.fragment_update
 
 
 import android.os.Bundle
@@ -7,20 +7,21 @@ import androidx.fragment.app.Fragment
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.arvinmarquez.expensebucket.R
 import com.arvinmarquez.expensebucket.data.entities.ExpenseEntity
 import com.arvinmarquez.expensebucket.databinding.FragmentUpdateTransactionBinding
 import com.arvinmarquez.expensebucket.data.pojo.ExpenseWithCategory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UpdateTransactionFragment : Fragment() {
     private val args by navArgs<UpdateTransactionFragmentArgs>()
 
     private lateinit var binder: FragmentUpdateTransactionBinding
-    private lateinit var viewModel: UpdateViewModel
-
+    private val viewModel: UpdateViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +34,6 @@ class UpdateTransactionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[UpdateViewModel::class.java]
         setHasOptionsMenu(true)
         displayExpense(args.item)
     }
