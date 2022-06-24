@@ -1,4 +1,4 @@
-package com.arvinmarquez.expensebucket.presentation.fragment_add
+package com.arvinmarquez.expensebucket.presentation.expenses.fragment_add
 
 import android.os.Bundle
 import android.text.Editable

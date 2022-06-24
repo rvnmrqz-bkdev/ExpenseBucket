@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Provider
 
 class DbCallback(
-    private val provider: Provider<CategoryDao>
+    private val categoryDaoProvider: Provider<CategoryDao>
 ) : RoomDatabase.Callback() {
 
     private val applicationScope = CoroutineScope(SupervisorJob())
@@ -24,10 +24,10 @@ class DbCallback(
     }
 
     private suspend fun populateDatabase() {
-        provider.get().insertCategory(CategoryEntity(0, "Uncategorized", "-", 1))
-        provider.get().insertCategory(CategoryEntity(0, "Food", "-", 1))
-        provider.get().insertCategory(CategoryEntity(0, "Transportation", "-", 1))
-        provider.get().insertCategory(CategoryEntity(0, "Bill", "-", 1))
-        provider.get().insertCategory(CategoryEntity(0, "Personal", "-", 1))
+        categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Uncategorized", "-", 1))
+        categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Food", "-", 1))
+        categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Transportation", "-", 1))
+        categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Bill", "-", 1))
+        categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Personal", "-", 1))
     }
 }

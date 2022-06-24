@@ -1,4 +1,4 @@
-package com.arvinmarquez.expensebucket.presentation.fragment_update
+package com.arvinmarquez.expensebucket.presentation.expenses.fragment_update
 
 
 import android.os.Bundle

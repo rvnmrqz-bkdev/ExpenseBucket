@@ -24,7 +24,7 @@ object DatabaseModule {
     @Singleton
     fun providesAppDatabase(
         @ApplicationContext context: Context,
-        provider: Provider<CategoryDao>
+        categoryDaoProvider: Provider<CategoryDao>
     ): BucketDatabase {
         return Room.databaseBuilder(
             context,
@@ -32,7 +32,7 @@ object DatabaseModule {
             Constants.Database.DATABASE_NAME
         )
             .setJournalMode(RoomDatabase.JournalMode.TRUNCATE)
-            .addCallback(DbCallback(provider))
+            .addCallback(DbCallback(categoryDaoProvider))
             .build()
     }
 

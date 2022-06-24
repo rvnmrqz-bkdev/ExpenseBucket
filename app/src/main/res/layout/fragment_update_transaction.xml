@@ -6,7 +6,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".presentation.fragment_update.UpdateTransactionFragment">
+    tools:context=".presentation.expenses.fragment_update.UpdateTransactionFragment">
 
     <TextView
         android:layout_width="match_parent"

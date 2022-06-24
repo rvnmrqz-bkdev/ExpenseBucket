@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.arvinmarquez.expensebucket.presentation.fragment_home.HomeFragment"
+        android:name="com.arvinmarquez.expensebucket.presentation.expenses.fragment_list.HomeFragment"
         android:label="Expenses"
         tools:layout="@layout/fragment_home">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/addTransactionFragment"
-        android:name="com.arvinmarquez.expensebucket.presentation.fragment_add.AddTransactionFragment"
+        android:name="com.arvinmarquez.expensebucket.presentation.expenses.fragment_add.AddTransactionFragment"
         android:label="Add"
         tools:layout="@layout/fragment_add_transaction">
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateTransactionFragment"
-        android:name="com.arvinmarquez.expensebucket.presentation.fragment_update.UpdateTransactionFragment"
+        android:name="com.arvinmarquez.expensebucket.presentation.expenses.fragment_update.UpdateTransactionFragment"
         android:label="Edit"
         tools:layout="@layout/fragment_update_transaction">
         <action
