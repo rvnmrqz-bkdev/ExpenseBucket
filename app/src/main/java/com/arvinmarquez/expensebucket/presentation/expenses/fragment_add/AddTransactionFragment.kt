@@ -22,7 +22,6 @@ class AddTransactionFragment : Fragment() {
     private lateinit var binder: FragmentAddTransactionBinding
     private val viewModel: AddViewModel by viewModels()
 
-
     companion object {
         private const val TAG = "AddTransactionFragment"
     }

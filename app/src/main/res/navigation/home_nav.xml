@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_updateTransactionFragment"
             app:destination="@id/updateTransactionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoryListFragment"
+            app:destination="@id/categoryListFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTransactionFragment"
@@ -37,5 +40,38 @@
         <argument
             android:name="item"
             app:argType="com.arvinmarquez.expensebucket.data.pojo.ExpenseWithCategory" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryListFragment"
+        android:name="com.arvinmarquez.expensebucket.presentation.categories.fragment_list.CategoryListFragment"
+        android:label="Categories"
+        tools:layout="@layout/fragment_category_list">
+        <action
+            android:id="@+id/action_categoryListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_categoryListFragment_to_categoryEditFragment"
+            app:destination="@id/categoryEditFragment" />
+        <action
+            android:id="@+id/action_categoryListFragment_to_categoryAddFragment"
+            app:destination="@id/categoryAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryEditFragment"
+        android:name="com.arvinmarquez.expensebucket.presentation.categories.fragment_edit.CategoryEditFragment"
+        android:label="fragment_category_edit"
+        tools:layout="@layout/fragment_category_edit" >
+        <action
+            android:id="@+id/action_categoryEditFragment_to_categoryListFragment"
+            app:destination="@id/categoryListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryAddFragment"
+        android:name="com.arvinmarquez.expensebucket.presentation.categories.fragment_add.CategoryAddFragment"
+        android:label="fragment_category_add"
+        tools:layout="@layout/fragment_category_add" >
+        <action
+            android:id="@+id/action_categoryAddFragment_to_categoryListFragment"
+            app:destination="@id/categoryListFragment" />
     </fragment>
 </navigation>
