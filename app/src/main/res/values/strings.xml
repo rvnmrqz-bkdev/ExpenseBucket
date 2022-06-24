@@ -5,7 +5,7 @@
     <string name="email_hint">Email or number</string>
     <string name="sign_in">Sign In</string>
     <string name="description">Description</string>
-    <string name="add_transaction">Add Transaction</string>
-    <string name="update_transaction">Update Transaction</string>
+    <string name="add_transaction">New Expense</string>
+    <string name="update_transaction">Edit Expense</string>
     <string name="delete">Delete</string>
 </resources>

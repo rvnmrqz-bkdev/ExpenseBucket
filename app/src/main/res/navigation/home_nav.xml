@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.arvinmarquez.expensebucket.presentation.fragment_home.HomeFragment"
-        android:label="Home"
+        android:label="Expenses"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_addTransactionFragment"
@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/updateTransactionFragment"
         android:name="com.arvinmarquez.expensebucket.presentation.fragment_update.UpdateTransactionFragment"
-        android:label="Update"
+        android:label="Edit"
         tools:layout="@layout/fragment_update_transaction">
         <action
             android:id="@+id/action_updateTransactionFragment_to_homeFragment"
