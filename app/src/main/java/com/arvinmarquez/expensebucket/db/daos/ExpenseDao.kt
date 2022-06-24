@@ -9,7 +9,7 @@ import com.arvinmarquez.expensebucket.data.pojo.ExpenseWithCategory
 interface ExpenseDao {
 
     @Transaction
-    @Query("SELECT * FROM expense_table")
+    @Query("SELECT * FROM expense_table ORDER BY date DESC")
     fun liveExpensesWithCategory() : LiveData<List<ExpenseWithCategory>>
 
     @Query("SELECT * FROM expense_table ORDER BY date DESC")
