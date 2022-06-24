@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment_home.HomeFragment">
+    tools:context=".presentation.fragment_home.HomeFragment">
 
 
     <RelativeLayout
@@ -11,13 +12,13 @@
         android:layout_height="match_parent">
 
         <FrameLayout
-            android:visibility="gone"
-            android:layout_margin="4dp"
             android:id="@+id/chartLayout"
             android:layout_width="match_parent"
             android:layout_height="220dp"
+            android:layout_margin="4dp"
             android:background="@color/black_500"
-            android:padding="1dp">
+            android:padding="1dp"
+            android:visibility="gone">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -39,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/chartLayout"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/transaction_item_view" />
 
     </RelativeLayout>

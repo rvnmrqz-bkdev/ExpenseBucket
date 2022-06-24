@@ -1,4 +1,4 @@
-package com.arvinmarquez.expensebucket.ui.fragment_home
+package com.arvinmarquez.expensebucket.presentation.fragment_home
 
 
 import android.view.LayoutInflater
