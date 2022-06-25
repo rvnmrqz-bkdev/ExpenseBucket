@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/categoryListFragment"
         android:name="com.arvinmarquez.expensebucket.presentation.categories.fragment_list.CategoryListFragment"
-        android:label="Categories"
+        android:label="Manage Categories"
         tools:layout="@layout/fragment_category_list">
         <action
             android:id="@+id/action_categoryListFragment_to_homeFragment"
@@ -59,17 +59,20 @@
     <fragment
         android:id="@+id/categoryEditFragment"
         android:name="com.arvinmarquez.expensebucket.presentation.categories.fragment_edit.CategoryEditFragment"
-        android:label="fragment_category_edit"
-        tools:layout="@layout/fragment_category_edit" >
+        android:label="Edit Category"
+        tools:layout="@layout/fragment_category_edit">
         <action
             android:id="@+id/action_categoryEditFragment_to_categoryListFragment"
             app:destination="@id/categoryListFragment" />
+        <argument
+            android:name="category"
+            app:argType="com.arvinmarquez.expensebucket.data.entities.CategoryEntity" />
     </fragment>
     <fragment
         android:id="@+id/categoryAddFragment"
         android:name="com.arvinmarquez.expensebucket.presentation.categories.fragment_add.CategoryAddFragment"
-        android:label="fragment_category_add"
-        tools:layout="@layout/fragment_category_add" >
+        android:label="Add Category"
+        tools:layout="@layout/fragment_category_add">
         <action
             android:id="@+id/action_categoryAddFragment_to_categoryListFragment"
             app:destination="@id/categoryListFragment" />

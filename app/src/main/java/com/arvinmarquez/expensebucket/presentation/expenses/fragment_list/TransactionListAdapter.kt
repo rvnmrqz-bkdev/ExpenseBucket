@@ -45,8 +45,10 @@ class TransactionListAdapter(val adapterOnClick: (ExpenseWithCategory) -> Unit) 
         private val amountTxt = binder.amountTxt
 
         fun bind(item: ExpenseWithCategory) {
+            val operator = if(item.category?.isExpense == true) "-" else "+"
+
             descriptionTxt.text = item.expense.description
-            amountTxt.text = "${item.category?.operator} ${item.expense.amount}"
+            amountTxt.text = "$operator ${item.expense.amount}"
             categoryDescTxt.text = item.category?.description
         }
     }
