@@ -1,13 +1,16 @@
 package com.arvinmarquez.expensebucket.data.entities
 
 import android.os.Parcelable
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 import java.util.*
 
 @Parcelize
 @Entity(
-    tableName = "expense_table",
+    tableName = "cash_flow_table",
     foreignKeys = [
         ForeignKey(
             entity = CategoryEntity::class,
@@ -17,8 +20,7 @@ import java.util.*
         )
     ]
 )
-data class ExpenseEntity(
-
+data class CashFlowEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
 

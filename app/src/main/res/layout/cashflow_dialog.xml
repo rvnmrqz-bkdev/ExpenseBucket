@@ -2,24 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="24dp"
-    tools:context=".presentation.expenses.fragment_add.AddTransactionFragment">
+    android:padding="24dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_transaction"
-        android:textAlignment="center"
-        android:textColor="@color/black_700"
-        android:textSize="26sp" />
+        android:text="DIALOG TITLE"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/description_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:hint="@string/description"
         android:inputType="textCapSentences" />
 
@@ -28,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Amount"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -54,6 +52,7 @@
     </RelativeLayout>
 
     <Button
+        android:layout_marginTop="16dp"
         android:id="@+id/done_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

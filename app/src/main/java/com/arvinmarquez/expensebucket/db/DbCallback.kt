@@ -25,10 +25,10 @@ class DbCallback(
 
     private suspend fun populateDatabase() {
         categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Uncategorized", true, true))
-        categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Food", true, true))
+        categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Food & Groceries", true, true))
         categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Transportation", true, true))
-        categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Home", true, true))
-        categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Personal", true, true))
-        categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Income", false, true))
+        categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Housing/Rent", true, true))
+        categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Utility Bills", true, true))
+        categoryDaoProvider.get().insertCategory(CategoryEntity(0, "Salary", false, true))
     }
 }

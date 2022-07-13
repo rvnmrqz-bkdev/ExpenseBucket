@@ -1,4 +1,4 @@
-package com.arvinmarquez.expensebucket.presentation.expenses.fragment_list
+package com.arvinmarquez.expensebucket.presentation.cash_flow
 
 
 import android.view.LayoutInflater
@@ -6,16 +6,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.arvinmarquez.expensebucket.R
 import com.arvinmarquez.expensebucket.databinding.TransactionItemViewBinding
-import com.arvinmarquez.expensebucket.data.pojo.ExpenseWithCategory
+import com.arvinmarquez.expensebucket.domain.CashFlow
+import com.arvinmarquez.expensebucket.utils.NumberUtils
 
-class TransactionListAdapter(val adapterOnClick: (ExpenseWithCategory) -> Unit) :
-    RecyclerView.Adapter<TransactionListAdapter.MViewHolder>() {
+class CashFlowListAdapter :
+    RecyclerView.Adapter<CashFlowListAdapter.MViewHolder>() {
 
     companion object {
-        private const val TAG = "TransactionListAdapter"
+        private const val TAG = "CashFlowListAdapter"
     }
 
-    private var listItems = emptyList<ExpenseWithCategory>()
+    private var listItems = emptyList<CashFlow>()
+    var onItemClicked: ((CashFlow) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -27,14 +29,14 @@ class TransactionListAdapter(val adapterOnClick: (ExpenseWithCategory) -> Unit) 
     override fun onBindViewHolder(holder: MViewHolder, position: Int) {
         val currentItem = listItems[position]
         holder.bind(currentItem)
-        holder.itemView.setOnClickListener { adapterOnClick(currentItem) }
+        holder.itemView.setOnClickListener { onItemClicked?.invoke(currentItem) }
     }
 
     override fun getItemCount(): Int {
         return listItems.size
     }
 
-    fun setItems(items: List<ExpenseWithCategory>) {
+    fun setItems(items: List<CashFlow>) {
         this.listItems = items
         notifyDataSetChanged()
     }
@@ -44,11 +46,12 @@ class TransactionListAdapter(val adapterOnClick: (ExpenseWithCategory) -> Unit) 
         private val categoryDescTxt = binder.categoryTxt
         private val amountTxt = binder.amountTxt
 
-        fun bind(item: ExpenseWithCategory) {
-            val operator = if(item.category?.isExpense == true) "-" else "+"
+        fun bind(item: CashFlow) {
+            val operator = if (item.category?.isExpense == true) "-" else "+"
+            val amount = NumberUtils().toMoneyFormat("P", item.amount)
 
-            descriptionTxt.text = item.expense.description
-            amountTxt.text = "$operator ${item.expense.amount}"
+            descriptionTxt.text = item.description
+            amountTxt.text = "$operator $amount"
             categoryDescTxt.text = item.category?.description
         }
     }

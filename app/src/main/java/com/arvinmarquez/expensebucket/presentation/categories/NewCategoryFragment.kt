@@ -1,22 +1,19 @@
-package com.arvinmarquez.expensebucket.presentation.categories.fragment_add
+package com.arvinmarquez.expensebucket.presentation.categories
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.arvinmarquez.expensebucket.R
-import com.arvinmarquez.expensebucket.data.entities.CategoryEntity
 import com.arvinmarquez.expensebucket.databinding.FragmentCategoryAddBinding
-import com.arvinmarquez.expensebucket.databinding.FragmentCategoryListBinding
-import com.arvinmarquez.expensebucket.presentation.categories.CategoryViewModel
+import com.arvinmarquez.expensebucket.domain.Category
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CategoryAddFragment : Fragment() {
+class NewCategoryFragment : Fragment() {
 
     private lateinit var binder: FragmentCategoryAddBinding
     private val viewModel: CategoryViewModel by viewModels()
@@ -35,17 +32,19 @@ class CategoryAddFragment : Fragment() {
         binder.rbExpense.isChecked = true
 
         binder.fabSave.setOnClickListener {
-            val newCategory = CategoryEntity(
-                0,
-                binder.descriptionEdt.text.toString().trim(),
-                binder.rbExpense.isChecked,
-                true
-            )
-            val error = viewModel.add(newCategory)
-            if (error == null) {
-                Toast.makeText(requireContext(), "New category saved", Toast.LENGTH_SHORT).show()
-                findNavController().navigateUp()
-            } else Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+            saveCategory()
         }
     }
+
+    private fun saveCategory() {
+        val description = binder.edtDescription.text.toString().trim()
+        val isExpense = binder.rbExpense.isChecked
+
+        val category = Category(0, description, isExpense,true)
+        viewModel.add(category)
+
+        Toast.makeText(requireContext(),"Category saved", Toast.LENGTH_SHORT).show()
+        findNavController().navigateUp()
+    }
+
 }

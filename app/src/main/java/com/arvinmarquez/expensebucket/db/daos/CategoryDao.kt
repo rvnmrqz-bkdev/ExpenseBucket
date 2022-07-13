@@ -3,13 +3,14 @@ package com.arvinmarquez.expensebucket.db.daos
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.arvinmarquez.expensebucket.data.entities.CategoryEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CategoryDao {
 
 
     @Query("SELECT * FROM category_table WHERE is_active = 1")
-    fun liveCategories(): LiveData<List<CategoryEntity>>
+    fun liveCategories(): Flow<List<CategoryEntity>>
 
     @Query("SELECT * FROM category_table")
     fun allCategories(): List<CategoryEntity>

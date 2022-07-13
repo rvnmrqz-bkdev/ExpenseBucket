@@ -1,10 +1,13 @@
-package com.arvinmarquez.expensebucket.presentation.categories
+package com.arvinmarquez.expensebucket.presentation.cash_flow
+
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.arvinmarquez.expensebucket.data.repository.CashFlowRepository
 import com.arvinmarquez.expensebucket.data.repository.CategoryRepository
+import com.arvinmarquez.expensebucket.domain.CashFlow
 import com.arvinmarquez.expensebucket.domain.Category
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -13,20 +16,29 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CategoryViewModel
+class CashFlowViewModel
 @Inject constructor(
-    private val categoryRepository: CategoryRepository
+    private val cashFlowRepository: CashFlowRepository,
+    private val categoryRepository: CategoryRepository,
 ) : ViewModel() {
 
-    companion object {
-        private val TAG = "CategoryViewModel"
-    }
+    private val _cashFlowList = MutableLiveData<List<CashFlow>>()
+    val cashFlowList = _cashFlowList as LiveData<List<CashFlow>>
 
     private val _categoryList = MutableLiveData<List<Category>>()
     val categoryList = _categoryList as LiveData<List<Category>>
 
     init {
+        getCashFlowList()
         getCategoryList()
+    }
+
+    private fun getCashFlowList() {
+        viewModelScope.launch(Dispatchers.IO) {
+            cashFlowRepository.getLiveCashFlow().collectLatest {
+                _cashFlowList.postValue(it)
+            }
+        }
     }
 
     private fun getCategoryList() {
@@ -37,23 +49,21 @@ class CategoryViewModel
         }
     }
 
-    fun add(category: Category) {
+    fun add(cashFlow: CashFlow) {
         viewModelScope.launch(Dispatchers.IO) {
-            categoryRepository.addCategory(category)
+            cashFlowRepository.insert(cashFlow)
         }
     }
 
-    fun update(category: Category) {
+    fun update(cashFlow: CashFlow) {
         viewModelScope.launch(Dispatchers.IO) {
-            categoryRepository.updateCategory(category)
+            cashFlowRepository.update(cashFlow)
         }
     }
 
-    fun delete(category: Category) {
+    fun delete(cashFlow: CashFlow) {
         viewModelScope.launch(Dispatchers.IO) {
-            categoryRepository.deleteCategory(category)
+            cashFlowRepository.delete(cashFlow)
         }
     }
-
-
 }

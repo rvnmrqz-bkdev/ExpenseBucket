@@ -21,7 +21,7 @@
             android:textSize="26sp" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/description_edt"
+            android:id="@+id/edtDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/description"

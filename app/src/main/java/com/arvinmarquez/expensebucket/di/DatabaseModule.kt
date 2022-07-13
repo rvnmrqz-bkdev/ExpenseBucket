@@ -5,8 +5,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.arvinmarquez.expensebucket.db.BucketDatabase
 import com.arvinmarquez.expensebucket.db.DbCallback
+import com.arvinmarquez.expensebucket.db.daos.CashFlowCategoryDao
 import com.arvinmarquez.expensebucket.db.daos.CategoryDao
-import com.arvinmarquez.expensebucket.db.daos.ExpenseDao
+import com.arvinmarquez.expensebucket.db.daos.CashFlowDao
 import com.arvinmarquez.expensebucket.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -36,9 +37,14 @@ object DatabaseModule {
             .build()
     }
 
+    //entity dao
     @Provides
-    fun providesExpenseDao(database: BucketDatabase): ExpenseDao = database.expenseDao()
+    fun providesCashFlowDao(database: BucketDatabase): CashFlowDao = database.cashFlowDao()
 
     @Provides
     fun providesCategoryDao(database: BucketDatabase): CategoryDao = database.categoryDao()
+
+    //pojo dao
+    @Provides
+    fun providesCashFlowCategoryDao(database: BucketDatabase) : CashFlowCategoryDao = database.cashFlowCategoryDao()
 }

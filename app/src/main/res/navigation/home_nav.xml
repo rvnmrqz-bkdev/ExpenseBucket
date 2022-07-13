@@ -7,44 +7,44 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.arvinmarquez.expensebucket.presentation.expenses.fragment_list.HomeFragment"
-        android:label="Expenses"
-        tools:layout="@layout/fragment_home">
+        android:name="com.arvinmarquez.expensebucket.presentation.cash_flow.CashFlowListFragment"
+        android:label="Cash Flow"
+        tools:layout="@layout/fragment_cashflow_list" >
         <action
-            android:id="@+id/action_homeFragment_to_addTransactionFragment"
-            app:destination="@id/addTransactionFragment" />
+            android:id="@+id/action_homeFragment_to_newCashFlowFragment"
+            app:destination="@id/newCashFlowFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_updateTransactionFragment"
-            app:destination="@id/updateTransactionFragment" />
+            android:id="@+id/action_homeFragment_to_updateCashFlowFragment"
+            app:destination="@id/updateCashFlowFragment" />
         <action
             android:id="@+id/action_homeFragment_to_categoryListFragment"
             app:destination="@id/categoryListFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addTransactionFragment"
-        android:name="com.arvinmarquez.expensebucket.presentation.expenses.fragment_add.AddTransactionFragment"
-        android:label="Add"
-        tools:layout="@layout/fragment_add_transaction">
+        android:id="@+id/newCashFlowFragment"
+        android:name="com.arvinmarquez.expensebucket.presentation.cash_flow.NewCashFlowFragment"
+        android:label="New Activity"
+        tools:layout="@layout/fragment_new_cash_flow">
         <action
-            android:id="@+id/action_addTransactionFragment_to_homeFragment"
+            android:id="@+id/action_newCashFlowFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/updateTransactionFragment"
-        android:name="com.arvinmarquez.expensebucket.presentation.expenses.fragment_update.UpdateTransactionFragment"
-        android:label="Edit"
-        tools:layout="@layout/fragment_update_transaction">
+        android:id="@+id/updateCashFlowFragment"
+        android:name="com.arvinmarquez.expensebucket.presentation.cash_flow.UpdateCashFlowFragment"
+        android:label="Update Activity"
+        tools:layout="@layout/fragment_update_cash_flow">
         <action
-            android:id="@+id/action_updateTransactionFragment_to_homeFragment"
+            android:id="@+id/action_updateCashFlowFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
         <argument
-            android:name="item"
-            app:argType="com.arvinmarquez.expensebucket.data.pojo.ExpenseWithCategory" />
+            android:name="cashFlow"
+            app:argType="com.arvinmarquez.expensebucket.domain.CashFlow" />
     </fragment>
     <fragment
         android:id="@+id/categoryListFragment"
-        android:name="com.arvinmarquez.expensebucket.presentation.categories.fragment_list.CategoryListFragment"
-        android:label="Manage Categories"
+        android:name="com.arvinmarquez.expensebucket.presentation.categories.CategoryListFragment"
+        android:label="Categories"
         tools:layout="@layout/fragment_category_list">
         <action
             android:id="@+id/action_categoryListFragment_to_homeFragment"
@@ -53,28 +53,26 @@
             android:id="@+id/action_categoryListFragment_to_categoryEditFragment"
             app:destination="@id/categoryEditFragment" />
         <action
-            android:id="@+id/action_categoryListFragment_to_categoryAddFragment"
-            app:destination="@id/categoryAddFragment" />
+            android:id="@+id/action_categoryListFragment_to_newCategoryFragment"
+            app:destination="@id/newCategoryFragment2" />
     </fragment>
     <fragment
         android:id="@+id/categoryEditFragment"
-        android:name="com.arvinmarquez.expensebucket.presentation.categories.fragment_edit.CategoryEditFragment"
-        android:label="Edit Category"
-        tools:layout="@layout/fragment_category_edit">
+        android:name="com.arvinmarquez.expensebucket.presentation.categories.UpdateCategoryFragment"
+        android:label="Category">
         <action
             android:id="@+id/action_categoryEditFragment_to_categoryListFragment"
             app:destination="@id/categoryListFragment" />
         <argument
             android:name="category"
-            app:argType="com.arvinmarquez.expensebucket.data.entities.CategoryEntity" />
+            app:argType="com.arvinmarquez.expensebucket.domain.Category" />
     </fragment>
     <fragment
-        android:id="@+id/categoryAddFragment"
-        android:name="com.arvinmarquez.expensebucket.presentation.categories.fragment_add.CategoryAddFragment"
-        android:label="Add Category"
-        tools:layout="@layout/fragment_category_add">
+        android:id="@+id/newCategoryFragment2"
+        android:name="com.arvinmarquez.expensebucket.presentation.categories.NewCategoryFragment"
+        android:label="Category">
         <action
-            android:id="@+id/action_categoryAddFragment_to_categoryListFragment"
+            android:id="@+id/action_newCategoryFragment2_to_categoryListFragment"
             app:destination="@id/categoryListFragment" />
     </fragment>
 </navigation>

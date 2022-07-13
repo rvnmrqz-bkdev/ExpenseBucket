@@ -1,9 +1,10 @@
 package com.arvinmarquez.expensebucket.di
 
-import com.arvinmarquez.expensebucket.data.repository.CategoryRepo
-import com.arvinmarquez.expensebucket.data.repository.ExpenseRepo
+import com.arvinmarquez.expensebucket.data.repository.CategoryRepository
+import com.arvinmarquez.expensebucket.data.repository.CashFlowRepository
+import com.arvinmarquez.expensebucket.db.daos.CashFlowCategoryDao
 import com.arvinmarquez.expensebucket.db.daos.CategoryDao
-import com.arvinmarquez.expensebucket.db.daos.ExpenseDao
+import com.arvinmarquez.expensebucket.db.daos.CashFlowDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,14 +17,14 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesExpenseRepository(dao: ExpenseDao): ExpenseRepo {
-        return ExpenseRepo(dao)
+    fun providesCashFlowRepository(dao: CashFlowDao, pojoDao: CashFlowCategoryDao): CashFlowRepository {
+        return CashFlowRepository(dao, pojoDao)
     }
 
     @Singleton
     @Provides
-    fun providesCategoryRepository(dao: CategoryDao): CategoryRepo {
-        return CategoryRepo(dao)
+    fun providesCategoryRepository(dao: CategoryDao): CategoryRepository {
+        return CategoryRepository(dao)
     }
 
 }
