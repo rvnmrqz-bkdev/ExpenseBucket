@@ -47,13 +47,13 @@ class NewCashFlowFragment : Fragment() {
 
     private fun saveCashFlow() {
         val description = binder.edtDescription.text.toString().trim()
-        val amount = binder.edtAmount.text.toString().trim().toDoubleOrNull()
+        val amount = binder.edtAmount.text.toString().trim().toDoubleOrNull() ?: 0.0
         val category = binder.spnCategory.selectedItem as Category
 
-        val newCashFlow = CashFlow(0, description, category, amount ?: 0.0, Calendar.getInstance().time)
+        val newCashFlow = CashFlow(0, description, category, amount, Calendar.getInstance().time)
         viewModel.add(newCashFlow)
 
-        Toast.makeText(requireContext(),"Item saved", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Item saved", Toast.LENGTH_SHORT).show()
         findNavController().navigateUp()
     }
 }

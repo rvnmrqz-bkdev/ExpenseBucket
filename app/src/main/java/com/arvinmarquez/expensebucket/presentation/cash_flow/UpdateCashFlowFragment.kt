@@ -66,26 +66,26 @@ class UpdateCashFlowFragment : Fragment() {
 
     private fun updateCashFlow() {
         val description = binder.edtDescription.text.toString().trim()
-        val amount = binder.edtAmount.text.toString().trim().toDoubleOrNull()
+        val amount = binder.edtAmount.text.toString().trim().toDoubleOrNull() ?: 0.0
         val category = binder.spnCategory.selectedItem as Category
 
         val updatedCashFlow = CashFlow(
             args.cashFlow.id,
             description,
             category,
-            amount ?: 0.0,
+            amount,
             args.cashFlow.date
         )
         viewModel.update(updatedCashFlow)
 
-        Toast.makeText(requireContext(),"Item saved", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Item saved", Toast.LENGTH_SHORT).show()
         findNavController().navigateUp()
     }
 
     private fun deleteCashFlow() {
         viewModel.delete(args.cashFlow)
 
-        Toast.makeText(requireContext(),"Item deleted", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Item deleted", Toast.LENGTH_SHORT).show()
         findNavController().navigateUp()
     }
 
