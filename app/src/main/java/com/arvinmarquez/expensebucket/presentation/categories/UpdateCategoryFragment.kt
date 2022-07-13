@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.arvinmarquez.expensebucket.R
-import com.arvinmarquez.expensebucket.databinding.FragmentCategoryEditBinding
+import com.arvinmarquez.expensebucket.databinding.FragmentUpdateCategoryBinding
 import com.arvinmarquez.expensebucket.domain.Category
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,7 +17,7 @@ class UpdateCategoryFragment : Fragment() {
 
     private val args by navArgs<UpdateCategoryFragmentArgs>()
 
-    private lateinit var binder: FragmentCategoryEditBinding
+    private lateinit var binder: FragmentUpdateCategoryBinding
     private val viewModel: CategoryViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +41,7 @@ class UpdateCategoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binder = FragmentCategoryEditBinding.inflate(inflater, container, false)
+        binder = FragmentUpdateCategoryBinding.inflate(inflater, container, false)
         return binder.root
     }
 

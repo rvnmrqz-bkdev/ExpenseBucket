@@ -8,14 +8,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.arvinmarquez.expensebucket.databinding.FragmentCategoryAddBinding
+import com.arvinmarquez.expensebucket.databinding.FragmentNewCategoryBinding
 import com.arvinmarquez.expensebucket.domain.Category
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class NewCategoryFragment : Fragment() {
 
-    private lateinit var binder: FragmentCategoryAddBinding
+    private lateinit var binder: FragmentNewCategoryBinding
     private val viewModel: CategoryViewModel by viewModels()
 
     override fun onCreateView(
@@ -23,7 +23,7 @@ class NewCategoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binder = FragmentCategoryAddBinding.inflate(inflater, container, false)
+        binder = FragmentNewCategoryBinding.inflate(inflater, container, false)
         return binder.root
     }
 
