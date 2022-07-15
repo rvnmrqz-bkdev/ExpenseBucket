@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.arvinmarquez.expensebucket.data.repository.CategoryRepository
-import com.arvinmarquez.expensebucket.domain.Category
+import com.arvinmarquez.expensebucket.features.category.domain.Category
+import com.arvinmarquez.expensebucket.features.category.domain.repository.CategoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CategoryViewModel
 @Inject constructor(
-    private val categoryRepository: CategoryRepository
+    private val categoryRepositoryImpl: CategoryRepository
 ) : ViewModel() {
 
     companion object {
@@ -31,7 +31,7 @@ class CategoryViewModel
 
     private fun getCategoryList() {
         viewModelScope.launch(Dispatchers.IO) {
-            categoryRepository.getLiveCategories().collectLatest {
+            categoryRepositoryImpl.getLiveCategories().collectLatest {
                 _categoryList.postValue(it)
             }
         }
@@ -39,19 +39,19 @@ class CategoryViewModel
 
     fun add(category: Category) {
         viewModelScope.launch(Dispatchers.IO) {
-            categoryRepository.addCategory(category)
+            categoryRepositoryImpl.insert(category)
         }
     }
 
     fun update(category: Category) {
         viewModelScope.launch(Dispatchers.IO) {
-            categoryRepository.updateCategory(category)
+            categoryRepositoryImpl.update(category)
         }
     }
 
     fun delete(category: Category) {
         viewModelScope.launch(Dispatchers.IO) {
-            categoryRepository.deleteCategory(category)
+            categoryRepositoryImpl.delete(category)
         }
     }
 

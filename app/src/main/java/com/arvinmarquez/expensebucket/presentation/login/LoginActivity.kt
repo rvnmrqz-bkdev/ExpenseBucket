@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import com.arvinmarquez.expensebucket.databinding.ActivityLoginBinding
-import com.arvinmarquez.expensebucket.presentation.MainActivity
+import com.arvinmarquez.expensebucket.presentation.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 

@@ -7,7 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.arvinmarquez.expensebucket.R
 import com.arvinmarquez.expensebucket.databinding.FragmentCashflowListBinding
-import com.arvinmarquez.expensebucket.domain.CashFlow
+import com.arvinmarquez.expensebucket.features.cashflow.domain.CashFlow
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

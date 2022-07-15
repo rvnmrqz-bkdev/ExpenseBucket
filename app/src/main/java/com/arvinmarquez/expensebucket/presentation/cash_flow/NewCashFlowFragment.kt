@@ -9,10 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.arvinmarquez.expensebucket.R
 import com.arvinmarquez.expensebucket.databinding.FragmentNewCashFlowBinding
-import com.arvinmarquez.expensebucket.domain.CashFlow
-import com.arvinmarquez.expensebucket.domain.Category
+import com.arvinmarquez.expensebucket.features.cashflow.domain.CashFlow
+import com.arvinmarquez.expensebucket.features.category.domain.Category
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 

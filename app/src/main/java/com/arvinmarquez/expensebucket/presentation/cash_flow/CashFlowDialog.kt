@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.arvinmarquez.expensebucket.R
 import com.arvinmarquez.expensebucket.databinding.CashflowDialogBinding
-import com.arvinmarquez.expensebucket.domain.CashFlow
+import com.arvinmarquez.expensebucket.features.cashflow.domain.CashFlow
 
 class CashFlowDialog(
     val title: String,

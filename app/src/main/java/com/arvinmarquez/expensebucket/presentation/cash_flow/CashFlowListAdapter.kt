@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.arvinmarquez.expensebucket.R
 import com.arvinmarquez.expensebucket.databinding.TransactionItemViewBinding
-import com.arvinmarquez.expensebucket.domain.CashFlow
-import com.arvinmarquez.expensebucket.utils.NumberUtils
+import com.arvinmarquez.expensebucket.features.cashflow.domain.CashFlow
+import com.arvinmarquez.expensebucket.core.utils.NumberUtils
 
 class CashFlowListAdapter :
     RecyclerView.Adapter<CashFlowListAdapter.MViewHolder>() {

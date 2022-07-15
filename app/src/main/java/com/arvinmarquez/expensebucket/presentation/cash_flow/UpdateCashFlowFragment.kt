@@ -10,8 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.arvinmarquez.expensebucket.R
 import com.arvinmarquez.expensebucket.databinding.FragmentUpdateCashFlowBinding
-import com.arvinmarquez.expensebucket.domain.CashFlow
-import com.arvinmarquez.expensebucket.domain.Category
+import com.arvinmarquez.expensebucket.features.cashflow.domain.CashFlow
+import com.arvinmarquez.expensebucket.features.category.domain.Category
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,14 +49,14 @@ class UpdateCashFlowFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binder.edtDescription.setText(args.cashFlow.description)
-        binder.edtAmount.setText(args.cashFlow.amount.toString())
+        binder.edtDescription.setText(args.cashflow.description)
+        binder.edtAmount.setText(args.cashflow.amount.toString())
 
         viewModel.categoryList.observe(viewLifecycleOwner) {
             spinnerAdapter =
                 ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, it)
             binder.spnCategory.adapter = spinnerAdapter
-            binder.spnCategory.setSelection(spinnerAdapter.getPosition(args.cashFlow.category))
+            binder.spnCategory.setSelection(spinnerAdapter.getPosition(args.cashflow.category))
         }
 
         binder.btnDone.setOnClickListener {
@@ -70,11 +70,11 @@ class UpdateCashFlowFragment : Fragment() {
         val category = binder.spnCategory.selectedItem as Category
 
         val updatedCashFlow = CashFlow(
-            args.cashFlow.id,
+            args.cashflow.id,
             description,
             category,
             amount,
-            args.cashFlow.date
+            args.cashflow.date
         )
         viewModel.update(updatedCashFlow)
 
@@ -83,7 +83,7 @@ class UpdateCashFlowFragment : Fragment() {
     }
 
     private fun deleteCashFlow() {
-        viewModel.delete(args.cashFlow)
+        viewModel.delete(args.cashflow)
 
         Toast.makeText(requireContext(), "Item deleted", Toast.LENGTH_SHORT).show()
         findNavController().navigateUp()

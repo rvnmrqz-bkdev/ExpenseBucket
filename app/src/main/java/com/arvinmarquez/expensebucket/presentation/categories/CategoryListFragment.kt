@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.arvinmarquez.expensebucket.R
 import com.arvinmarquez.expensebucket.databinding.FragmentCategoryListBinding
-import com.arvinmarquez.expensebucket.domain.Category
+import com.arvinmarquez.expensebucket.features.category.domain.Category
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,8 +48,7 @@ class CategoryListFragment : Fragment() {
 
     private fun goToUpdateCategoryFragment(category: Category) {
         if(category.id != 1L ){
-            val action =
-                CategoryListFragmentDirections.actionCategoryListFragmentToCategoryEditFragment(category)
+            val action = CategoryListFragmentDirections.actionCategoryListFragmentToCategoryEditFragment(category)
             findNavController().navigate(action)
         }else{
             Toast.makeText(requireContext(),"Category is not editable",Toast.LENGTH_SHORT).show()

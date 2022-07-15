@@ -4,41 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/off_white"
     tools:context=".presentation.cash_flow.CashFlowListFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--CHART-->
-        <FrameLayout
-            android:id="@+id/chartLayout"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_margin="4dp"
-            android:background="@color/black_500"
-            android:padding="1dp"
-            android:visibility="gone">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="CHART DATA HERE" />
-
-            </RelativeLayout>
-
-        </FrameLayout>
+        <!--SUMMARY-->
+        <include
+            android:id="@+id/summaryLayout"
+            layout="@layout/summary_card"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/chartLayout">
+            android:layout_below="@id/summaryLayout">
 
             <TextView
                 android:id="@+id/tvListMessage"
@@ -53,10 +35,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="0"
+                tools:itemCount="10"
                 tools:listitem="@layout/transaction_item_view" />
         </RelativeLayout>
-
 
     </RelativeLayout>
 
@@ -68,4 +49,5 @@
         android:layout_margin="24dp"
         android:contentDescription="Add"
         android:src="@drawable/ic_add" />
+
 </FrameLayout>

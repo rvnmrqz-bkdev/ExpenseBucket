@@ -4,11 +4,10 @@ package com.arvinmarquez.expensebucket.presentation.categories
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.arvinmarquez.expensebucket.R
 import com.arvinmarquez.expensebucket.databinding.CategoryItemViewBinding
-import com.arvinmarquez.expensebucket.domain.Category
+import com.arvinmarquez.expensebucket.features.category.domain.Category
 
 class CategoryListAdapter :
     RecyclerView.Adapter<CategoryListAdapter.MViewHolder>() {

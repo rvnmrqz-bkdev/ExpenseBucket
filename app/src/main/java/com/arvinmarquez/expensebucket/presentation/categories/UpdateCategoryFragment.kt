@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.arvinmarquez.expensebucket.R
 import com.arvinmarquez.expensebucket.databinding.FragmentUpdateCategoryBinding
-import com.arvinmarquez.expensebucket.domain.Category
+import com.arvinmarquez.expensebucket.features.category.domain.Category
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
