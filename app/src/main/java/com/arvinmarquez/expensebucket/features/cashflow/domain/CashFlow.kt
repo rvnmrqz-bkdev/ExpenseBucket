@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 import java.util.*
 
 @Parcelize
-class CashFlow(
+data class CashFlow(
     val id: Long,
     val description: String,
     var category: Category?,
