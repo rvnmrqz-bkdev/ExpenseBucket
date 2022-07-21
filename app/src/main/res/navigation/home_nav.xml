@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/categoryEditFragment"
-        android:name="com.arvinmarquez.expensebucket.presentation.categories.UpdateCategoryFragment"
+        android:name="com.arvinmarquez.expensebucket.presentation.categories.update.UpdateCategoryFragment"
         android:label="Category">
         <action
             android:id="@+id/action_categoryEditFragment_to_categoryListFragment"

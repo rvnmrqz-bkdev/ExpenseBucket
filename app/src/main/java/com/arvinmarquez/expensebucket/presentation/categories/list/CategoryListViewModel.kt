@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arvinmarquez.expensebucket.core.utils.Resource
-import com.arvinmarquez.expensebucket.features.category.data.use_cases.GetCategoriesUseCase
+import com.arvinmarquez.expensebucket.features.category.domain.use_case.GetCategoriesUseCase
 import com.arvinmarquez.expensebucket.features.category.domain.Category
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

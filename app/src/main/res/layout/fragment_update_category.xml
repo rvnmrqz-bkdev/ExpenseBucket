@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.categories.UpdateCategoryFragment">
+    tools:context=".presentation.categories.update.UpdateCategoryFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,9 +30,10 @@
             android:minHeight="48dp" />
 
         <RadioGroup
-            android:layout_marginTop="16dp"
+            android:id="@+id/rgCategoryType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <com.google.android.material.radiobutton.MaterialRadioButton
@@ -65,7 +66,6 @@
 
     </LinearLayout>
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabSave"
         android:layout_width="wrap_content"
@@ -78,4 +78,10 @@
         android:layout_marginBottom="24dp"
         android:src="@drawable/ic_check" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 </RelativeLayout>
