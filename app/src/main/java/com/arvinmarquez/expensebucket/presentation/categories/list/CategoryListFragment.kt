@@ -2,7 +2,6 @@ package com.arvinmarquez.expensebucket.presentation.categories.list
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.arvinmarquez.expensebucket.R
+import com.arvinmarquez.expensebucket.core.utils.Resource
 import com.arvinmarquez.expensebucket.databinding.FragmentCategoryListBinding
 import com.arvinmarquez.expensebucket.features.category.domain.Category
-import com.arvinmarquez.expensebucket.features.category.domain.CategoryListState
-import com.arvinmarquez.expensebucket.presentation.categories.CategoryListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,6 +34,11 @@ class CategoryListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initViews()
+        observeDataState()
+    }
+
+    private fun initViews() {
         binder.rvCategories.adapter = listAdapter
 
         listAdapter.onItemClicked = {
@@ -45,22 +48,28 @@ class CategoryListFragment : Fragment() {
         binder.fabAdd.setOnClickListener {
             goToNewCategoryFragment()
         }
-
-        viewModel.dataState.observe(viewLifecycleOwner) {
-            displayState(it)
-        }
     }
 
-    private fun displayState(state: CategoryListState) {
-        binder.progressBar.visibility = if (state.isLoading) View.VISIBLE else View.GONE
-
-        listAdapter.setItems(state.list)
-
-        if (!TextUtils.isEmpty(state.error)) Toast.makeText(
-            requireContext(),
-            state.error,
-            Toast.LENGTH_SHORT
-        ).show()
+    private fun observeDataState() {
+        viewModel.dataState.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Resource.Loading -> {
+                    setLoading(true)
+                }
+                is Resource.Success -> {
+                    setLoading(false)
+                    result.data?.let { listAdapter.setItems(it) }
+                }
+                is Resource.Error -> {
+                    setLoading(false)
+                    if (!TextUtils.isEmpty(result.message)) Toast.makeText(
+                        requireContext(),
+                        result.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
     }
 
     private fun goToUpdateCategoryFragment(category: Category) {
@@ -77,6 +86,11 @@ class CategoryListFragment : Fragment() {
 
     private fun goToNewCategoryFragment() {
         findNavController().navigate(R.id.action_categoryListFragment_to_newCategoryFragment)
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        binder.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binder.rvCategories.isEnabled = !isLoading
     }
 
 }

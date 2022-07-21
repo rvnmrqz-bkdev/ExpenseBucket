@@ -1,4 +1,4 @@
-package com.arvinmarquez.expensebucket.presentation.categories
+package com.arvinmarquez.expensebucket.presentation.categories.list
 
 
 import android.graphics.Color
