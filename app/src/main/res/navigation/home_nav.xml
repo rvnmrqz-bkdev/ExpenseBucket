@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/categoryListFragment"
-        android:name="com.arvinmarquez.expensebucket.presentation.categories.CategoryListFragment"
+        android:name="com.arvinmarquez.expensebucket.presentation.categories.list.CategoryListFragment"
         android:label="Categories"
         tools:layout="@layout/fragment_category_list">
         <action
@@ -69,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/newCategoryFragment2"
-        android:name="com.arvinmarquez.expensebucket.presentation.categories.NewCategoryFragment"
+        android:name="com.arvinmarquez.expensebucket.presentation.categories.add.NewCategoryFragment"
         android:label="Category">
         <action
             android:id="@+id/action_newCategoryFragment2_to_categoryListFragment"

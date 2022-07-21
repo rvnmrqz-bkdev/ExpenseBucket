@@ -22,21 +22,6 @@ class CategoryViewModel
         private val TAG = "CategoryViewModel"
     }
 
-    private val _categoryList = MutableLiveData<List<Category>>()
-    val categoryList = _categoryList as LiveData<List<Category>>
-
-    init {
-        getCategoryList()
-    }
-
-    private fun getCategoryList() {
-        viewModelScope.launch(Dispatchers.IO) {
-            categoryRepositoryImpl.getLiveCategories().collectLatest {
-                _categoryList.postValue(it)
-            }
-        }
-    }
-
     fun add(category: Category) {
         viewModelScope.launch(Dispatchers.IO) {
             categoryRepositoryImpl.insert(category)
