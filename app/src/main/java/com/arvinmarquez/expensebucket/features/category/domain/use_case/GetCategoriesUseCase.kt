@@ -1,4 +1,4 @@
-package com.arvinmarquez.expensebucket.features.category.data.use_cases
+package com.arvinmarquez.expensebucket.features.category.domain.use_case
 
 import com.arvinmarquez.expensebucket.core.utils.Resource
 import com.arvinmarquez.expensebucket.features.category.domain.Category
